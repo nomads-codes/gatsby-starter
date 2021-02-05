@@ -8,10 +8,15 @@
   ],
   "scripts": {
     "develop": "gatsby develop",
+    "build:clean": "gatsby clean && gatsby build --log-pages",
+    "build": "gatsby build --log-pages",
+    "start:verbose": "gatsby develop --verbose",
+    "start:clean": "gatsby clean && gatsby develop",
     "start": "gatsby develop",
-    "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "bump": "yarn upgrade-interactive --latest",
+    "purge": "rm -rf node_modules && yarn"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
