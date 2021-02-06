@@ -1,0 +1,29 @@
+backend:
+  name: github
+  repo: nomads-codes/gatsby-starter
+
+site_url: https://nomadscodes-gatsby-starter.netlify.app
+media_folder: "static/images/uploads"
+public_folder: images
+local_backend: true
+
+development_overrides:
+  site_url: http://localhost:8000
+
+collections:
+  - label: "Pages"
+    label_singular: "Page"
+    name: pages
+    folder: src/markdown/pages
+    create: false
+    extension: mdx
+    format: frontmatter
+    fields:
+      - name: title
+      - { name: date, widget: date }
+      - name: meta
+        widget: object
+        fields:
+          - name: title
+          - name: description
+          - name: permalink
