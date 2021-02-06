@@ -38,3 +38,33 @@ yarn purge
 yarn bump
 ```
 
+## Aliases in the project
+
+```shell
+# visual studio code config: jsconfig.json
+{
+  "compilerOptions": {
+    "paths": {
+      "~components": ["src/components"],
+      "~containers": ["src/containers"],
+      "~utils": ["src/utils"]
+    }
+  }
+}
+```
+
+```js
+# webpack config: gatsby/onCreateWebpackConfig.js
+
+module.exports = ({ plugins, actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        '~components': path.resolve(__dirname, '../src/components'),
+        '~containers': path.resolve(__dirname, '../src/containers'),
+        '~utils': path.resolve(__dirname, '../src/utils'),
+      },
+    },
+  });
+};
+```
