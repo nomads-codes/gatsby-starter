@@ -1,6 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `gatsby-starter`,
+    siteGithub: `https://github.com/nomads-codes/gatsby-starter`,
+    siteUrl: `https://nomadscodes-gatsby-starter.netlify.app`,
+    siteTitle: `Nomads Codes`,
   },
   plugins: [
     { resolve: `gatsby-plugin-netlify-cms` },

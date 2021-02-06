@@ -5,6 +5,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
+import SEOContainer from '~containers/SEOContainer';
 import { H1, P } from '~components';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -16,6 +17,8 @@ const GalleryPage = ({ data: { page } }) => {
 
   return (
     <>
+      <SEOContainer meta={meta} />
+
       <H1>{meta.title}</H1>
       <P>{meta.description}</P>
     </>
