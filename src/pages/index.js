@@ -5,6 +5,8 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
+import { H1, P } from '~components';
+
 // ─────────────────────────────────────────────────────────────────────────────
 //  Component
 // ─────────────────────────────────────────────────────────────────────────────
@@ -14,8 +16,8 @@ const IndexPage = ({ data: { page } }) => {
 
   return (
     <>
-      <h1>{meta.title}</h1>
-      <p>{meta.description}</p>
+      <H1>{meta.title}</H1>
+      <P>{meta.description}</P>
     </>
   );
 };

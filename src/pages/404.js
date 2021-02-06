@@ -5,6 +5,8 @@
 import { Link } from 'gatsby';
 import React from 'react';
 
+import { H1, P } from '~components';
+
 // ─────────────────────────────────────────────────────────────────────────────
 //  Component
 // ─────────────────────────────────────────────────────────────────────────────
@@ -12,12 +14,12 @@ import React from 'react';
 const NotFoundPage = () => {
   return (
     <>
-      <h1>Page not found</h1>
-      <p>
+      <H1>Page not found</H1>
+      <P>
         Sorry we couldn’t find what you were looking for.
         <br />
         <Link to="/">Go to home page</Link>.
-      </p>
+      </P>
     </>
   );
 };
