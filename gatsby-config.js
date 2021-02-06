@@ -1,29 +1,29 @@
 module.exports = {
   siteMetadata: {
-    title: 'gatsby-starter',
+    title: `gatsby-starter`,
   },
   plugins: [
-    'gatsby-plugin-netlify-cms',
-    'gatsby-plugin-styled-components',
-    'gatsby-plugin-sharp',
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-mdx',
-    'gatsby-transformer-sharp',
+    { resolve: `gatsby-plugin-netlify-cms` },
+    { resolve: `gatsby-transformer-sharp` },
+    { resolve: `gatsby-plugin-sharp` },
+    { resolve: `gatsby-plugin-styled-components` },
+    { resolve: `gatsby-plugin-react-helmet` },
+    { resolve: `gatsby-plugin-mdx` },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'images',
-        path: './content/images/',
+        path: `${__dirname}/static/images`,
+        name: `images`,
       },
-      __key: 'images',
+      __key: `images`,
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'pages',
-        path: './src/pages/',
+        path: `${__dirname}/src/markdown/pages`,
+        name: `mdxpages`,
       },
-      __key: 'pages',
+      __key: `mdxpages`,
     },
   ],
 };

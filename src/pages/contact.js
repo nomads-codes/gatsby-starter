@@ -9,7 +9,7 @@ import React from 'react';
 //  Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-const IndexPage = ({ data: { page } }) => {
+const ContactPage = ({ data: { page } }) => {
   const { meta } = page?.frontmatter;
 
   return (
@@ -20,7 +20,7 @@ const IndexPage = ({ data: { page } }) => {
   );
 };
 
-export default IndexPage;
+export default ContactPage;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Extended Default Styles
@@ -34,7 +34,7 @@ export const query = graphql`
   {
     page: mdx(
       fileAbsolutePath: { regex: "/markdown/pages/" }
-      frontmatter: { meta: { permalink: { eq: "/" } } }
+      frontmatter: { meta: { permalink: { eq: "/contact/" } } }
     ) {
       frontmatter {
         ...META_FRAGMENT
