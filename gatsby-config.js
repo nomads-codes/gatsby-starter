@@ -22,6 +22,14 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        path: `${__dirname}/src/markdown/navigations`,
+        name: `mdxnavigations`,
+      },
+      __key: `mdxnavigations`,
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         path: `${__dirname}/src/markdown/pages`,
         name: `mdxpages`,
       },
