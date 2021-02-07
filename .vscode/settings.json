@@ -1,4 +1,9 @@
 {
+  "workbench.colorCustomizations": {
+    "titleBar.inactiveBackground": "#ffc600CC",
+    "titleBar.activeBackground": "#ffc600"
+  },
+
   "editor.formatOnSaveMode": "file",
   "editor.formatOnSave": true,
 
@@ -18,6 +23,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
+  // "javascript.preferences.importModuleSpecifier": "non-relative",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.format.enable": true
 }
