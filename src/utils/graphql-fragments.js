@@ -17,3 +17,33 @@ export const META_FRAGMENT = graphql`
     }
   }
 `;
+
+export const FOOTER_FRAGMENT = graphql`
+  fragment FOOTER_FRAGMENT on Mdx {
+    frontmatter {
+      title
+      links {
+        url
+        type
+        title
+        text
+        mdx
+        links {
+          text
+          url
+        }
+      }
+    }
+  }
+`;
+
+export const HEADER_FRAGMENT = graphql`
+  fragment HEADER_FRAGMENT on Mdx {
+    frontmatter {
+      links {
+        text
+        url
+      }
+    }
+  }
+`;
