@@ -1,0 +1,54 @@
+backend:
+  name: git-gateway
+  squash_merges: true
+
+site_url: https://nomadscodes-gatsby-starter.netlify.app
+media_folder: "static/images/uploads"
+public_folder: images
+local_backend: true
+
+development_overrides:
+  site_url: http://localhost:8000
+
+collections:
+  - label: "Navigations"
+    label_singular: "Navigation"
+    name: navigations
+    folder: src/markdown/navigations
+    create: false
+    extension: mdx
+    format: frontmatter
+    fields:
+      - name: title
+      - name: links
+        widget: list
+        types:
+          - name: link
+            fields:
+              - name: text
+              - name: url
+          - name: nested
+            fields:
+              - name: title
+              - name: links
+                widget: list
+                fields:
+                  - name: text
+                  - name: url
+
+  - label: "Pages"
+    label_singular: "Page"
+    name: pages
+    folder: src/markdown/pages
+    create: false
+    extension: mdx
+    format: frontmatter
+    fields:
+      - name: title
+      - { name: date, widget: date }
+      - name: meta
+        widget: object
+        fields:
+          - name: title
+          - name: description
+          - name: permalink
