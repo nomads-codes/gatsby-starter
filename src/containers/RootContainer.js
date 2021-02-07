@@ -2,52 +2,35 @@
 // Import
 // ─────────────────────────────────────────────────────────────────────────────
 
-import { graphql } from 'gatsby';
+import PropTypes from 'prop-types';
 import React from 'react';
 
-import { SEOContainer, RootContainer } from '~containers';
-import { H1, P } from '~components';
+import { HeaderContainer, FooterContainer } from '~containers';
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  Component
+// Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-const IndexPage = ({ data: { page } }) => {
-  const { meta } = page?.frontmatter;
-
+export default function RootContainer({ children }) {
   return (
-    <RootContainer>
-      <SEOContainer meta={meta} />
-
-      <H1>{meta.title}</H1>
-      <P>{meta.description}</P>
-    </RootContainer>
+    <>
+      <HeaderContainer />
+      {children}
+      <FooterContainer />
+    </>
   );
-};
-
-export default IndexPage;
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Extended Default Styles
 // ─────────────────────────────────────────────────────────────────────────────
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Graphql Query
-// ─────────────────────────────────────────────────────────────────────────────
-
-export const query = graphql`
-  {
-    page: mdx(
-      fileAbsolutePath: { regex: "/markdown/pages/" }
-      frontmatter: { meta: { permalink: { eq: "/" } } }
-    ) {
-      frontmatter {
-        ...META_FRAGMENT
-      }
-    }
-  }
-`;
-
-// ─────────────────────────────────────────────────────────────────────────────
 // Others
 // ─────────────────────────────────────────────────────────────────────────────
+
+RootContainer.displayName = 'RootContainer';
+
+RootContainer.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.node]).isRequired,
+};
