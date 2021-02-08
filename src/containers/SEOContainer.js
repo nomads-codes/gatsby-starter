@@ -26,23 +26,27 @@ const SEOContainer = ({ meta }) => {
   const { siteUrl, siteTitle } = query.site.siteMetadata;
   const { title, description, permalink } = meta;
 
+  const hemletMetaData = [
+    { name: 'description', content: description },
+
+    { property: 'og:url', content: `${siteUrl}${permalink}` },
+    { property: 'og:title', content: `${title}` },
+    { property: 'og:type', content: 'website' },
+  ];
+
+  const hemletLinks = [
+    {
+      href: `${siteUrl}${permalink}`,
+      rel: 'canonical',
+    },
+  ];
+
   return (
     <Helmet
       title={siteTitle}
       titleTemplate={`%s | ${title}`}
-      meta={[
-        { name: 'description', content: description },
-
-        { property: 'og:url', content: `${siteUrl}${permalink}` },
-        { property: 'og:title', content: `${title}` },
-        { property: 'og:type', content: 'website' },
-      ]}
-      link={[
-        {
-          href: `${siteUrl}${permalink}`,
-          rel: 'canonical',
-        },
-      ]}
+      meta={hemletMetaData}
+      link={hemletLinks}
       htmlAttributes={{ lang: 'pl' }}
     />
   );

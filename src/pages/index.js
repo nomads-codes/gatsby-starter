@@ -5,27 +5,21 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import { SEOContainer, RootContainer } from '~containers';
-import { H1, P } from '~components';
+import { H1 } from '~components';
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-const IndexPage = ({ data: { page } }) => {
-  const { meta } = page?.frontmatter;
-
+const HomePage = () => {
   return (
-    <RootContainer>
-      <SEOContainer meta={meta} />
-
-      <H1>{meta.title}</H1>
-      <P>{meta.description}</P>
-    </RootContainer>
+    <>
+      <H1>HomePage</H1>
+    </>
   );
 };
 
-export default IndexPage;
+export default HomePage;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Extended Default Styles

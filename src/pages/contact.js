@@ -5,23 +5,18 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import { SEOContainer, RootContainer } from '~containers';
+// import { SEOContainer } from '~containers';
 import { H1, P } from '~components';
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-const ContactPage = ({ data: { page } }) => {
-  const { meta } = page?.frontmatter;
-
+const ContactPage = () => {
   return (
-    <RootContainer>
-      <SEOContainer meta={meta} />
-
-      <H1>{meta.title}</H1>
-      <P>{meta.description}</P>
-    </RootContainer>
+    <>
+      <H1>ContactPage</H1>
+    </>
   );
 };
 
