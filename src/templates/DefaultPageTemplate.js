@@ -2,35 +2,39 @@
 // Import
 // ─────────────────────────────────────────────────────────────────────────────
 
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import React from 'react';
 
 import { HeaderContainer, FooterContainer } from '~containers';
+import { Main, View } from '~components';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-export default function RootContainer({ children }) {
+const DefaultPageTemplate = ({ children }) => {
   return (
-    <>
+    <ViewStyled>
       <HeaderContainer />
-      {children}
+
+      <MainStyled>{children}</MainStyled>
+
       <FooterContainer />
-    </>
+    </ViewStyled>
   );
-}
+};
+
+export default DefaultPageTemplate;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Extended Default Styles
 // ─────────────────────────────────────────────────────────────────────────────
 
+const ViewStyled = styled(View)``;
+const MainStyled = styled(Main)``;
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Others
 // ─────────────────────────────────────────────────────────────────────────────
 
-RootContainer.displayName = 'RootContainer';
-
-RootContainer.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.node]).isRequired,
-};
+DefaultPageTemplate.displayName = 'DefaultPageTemplate';

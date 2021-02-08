@@ -1,23 +1,11 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// Text
+// Import
 // ─────────────────────────────────────────────────────────────────────────────
 
-export * from './text/HX';
-export * from './text/P';
+import styled from 'styled-components';
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Layout
+// Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-export * from './layout/Section';
-export * from './layout/Footer';
-export * from './layout/Header';
-export * from './layout/Main';
-export * from './layout/View';
-export * from './layout/Nav';
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Styled components - Global styles
-// ─────────────────────────────────────────────────────────────────────────────
-
-export * from './GlobalStyle';
+export const View = styled.div``;
