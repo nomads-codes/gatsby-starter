@@ -14,6 +14,7 @@ module.exports = ({ plugins, actions }) => {
       alias: {
         '~components': path.resolve(__dirname, '../src/components'),
         '~containers': path.resolve(__dirname, '../src/containers'),
+        '~templates': path.resolve(__dirname, '../src/templates'),
         '~utils': path.resolve(__dirname, '../src/utils'),
       },
     },
