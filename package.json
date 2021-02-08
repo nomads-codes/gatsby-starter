@@ -10,13 +10,20 @@
     "develop": "gatsby develop",
     "build:clean": "gatsby clean && gatsby build --log-pages",
     "build": "gatsby build --log-pages",
+    "build:functions": "netlify-lambda build src/functions",
+    "start:functions": "netlify-lambda serve src/functions",
     "start:verbose": "gatsby develop --verbose",
     "start:clean": "gatsby clean && gatsby develop",
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "bump": "yarn upgrade-interactive --latest",
-    "purge": "rm -rf node_modules && yarn"
+    "purge": "rm -rf node_modules && yarn",
+    "deploy:gh": "gatsby build --prefix-paths && gh-pages -d public",
+    "deploy:production:ntf": "gatsby build && netlify deploy --prod",
+    "deploy:preview:ntf": "gatsby build && netlify deploy",
+    "start:concurrently": "concurrently \"yarn start:clean\" \"yarn start:functions \"",
+    "build:concurrently": "concurrently \"yarn build:clean\" \"yarn build:functions \""
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
@@ -37,5 +44,11 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
     "styled-components": "^5.2.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "gh-pages": "^3.1.0",
+    "http-proxy-middleware": "^1.0.6",
+    "netlify-lambda": "^2.0.3"
   }
 }

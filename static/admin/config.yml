@@ -1,6 +1,6 @@
 backend:
-  name: github
-  repo: nomads-codes/gatsby-starter
+  name: git-gateway
+  squash_merges: true
 
 site_url: https://nomadscodes-gatsby-starter.netlify.app
 media_folder: "static/images/uploads"
