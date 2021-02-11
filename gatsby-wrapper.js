@@ -2,32 +2,47 @@
 // import
 // ─────────────────────────────────────────────────────────────────────────────
 
+import styled from 'styled-components';
 import React from 'react';
 
-import { DefaultPageTemplate } from '~templates';
-import { SEOContainer } from '~containers';
-import { GlobalStyle } from '~components';
+import { SEOContainer, HeaderContainer, FooterContainer } from '~containers';
+import { GlobalStyle, View, Main } from '~components';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const wrapPageElement = ({ element, props: { data } }) => {
-  const meta = data?.page?.frontmatter?.meta;
+export const wrapPageElement = ({
+  element,
+  props: {
+    data: {
+      page: {
+        frontmatter: { meta },
+      },
+    },
+  },
+}) => {
   return (
-    <DefaultPageTemplate>
+    <ViewStyled>
       <GlobalStyle />
-
       {meta && <SEOContainer meta={meta} />}
 
-      <>{element}</>
-    </DefaultPageTemplate>
+      <HeaderContainer />
+      <MainStyled>
+        <>{element}</>
+      </MainStyled>
+      <FooterContainer />
+    </ViewStyled>
   );
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Extended Default Styles
 // ─────────────────────────────────────────────────────────────────────────────
+
+const ViewStyled = styled(View)``;
+
+const MainStyled = styled(Main)``;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Others
