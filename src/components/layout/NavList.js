@@ -2,88 +2,67 @@
 // Import
 // ─────────────────────────────────────────────────────────────────────────────
 
-import { graphql, useStaticQuery, Link } from 'gatsby';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import { Link } from 'gatsby';
 import React from 'react';
 
-import { Header, Section, NavList, H1 } from '~components';
+import { Ul, Li } from '~components';
+import { isExternal } from '~utils';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-const HeaderContainer = () => {
-  const { top, bottom } = useStaticQuery(graphql`
-    {
-      top: mdx(
-        fileAbsolutePath: { regex: "/markdown/navigations/" }
-        frontmatter: { title: { eq: "HeaderTop" } }
-      ) {
-        ...HEADER_TOP_FRAGMENT
-      }
-
-      bottom: mdx(
-        fileAbsolutePath: { regex: "/markdown/navigations/" }
-        frontmatter: { title: { eq: "HeaderBottom" } }
-      ) {
-        ...HEADER_BOTTOM_FRAGMENT
-      }
-    }
-  `);
-
+const NavItem = ({ url, text }) => {
   return (
-    <HeaderStyled>
-      <SectionStyled isTop>
-        <NavList links={top.frontmatter.links} />
-      </SectionStyled>
-
-      <SectionStyled isBottom>
-        <H1>
-          <Link to="/">Nomads Codes</Link>
-        </H1>
-
-        <NavList links={bottom.frontmatter.links} />
-      </SectionStyled>
-    </HeaderStyled>
+    <Li key={url}>
+      {isExternal(url) ? (
+        <a target="_blank" rel="noopener" href={url}>
+          {text}
+        </a>
+      ) : (
+        <Link activeClassName="is-active" to={url}>
+          {text}
+        </Link>
+      )}
+    </Li>
   );
 };
 
-export default HeaderContainer;
+export const NavList = ({ links }) => {
+  return (
+    <NavStyled>
+      <Ul>
+        {links.map((props) => (
+          <NavItem key={props.url} {...props} />
+        ))}
+      </Ul>
+    </NavStyled>
+  );
+};
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Extended Default Styles
 // ─────────────────────────────────────────────────────────────────────────────
 
-const HeaderStyled = styled(Header)`
-  border-bottom: 1px solid rgba(0, 0, 0, 0.02);
-`;
+const NavStyled = styled.nav`
+  ${Ul} {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
 
-const SectionStyled = styled(Section)`
-  ${({ isTop }) =>
-    isTop &&
-    css`
-      background-color: rgba(0, 0, 0, 0.04);
-      justify-content: flex-end;
-      height: 4rem;
+    ${Li} {
+      padding: 0 1vw;
+    }
+  }
 
-      a {
-        font-size: 1.4rem;
-      }
-    `}
-
-  ${({ isBottom }) =>
-    isBottom &&
-    css`
-      justify-content: space-between;
-      height: 8rem;
-    `}
-
-  align-items: center;
-  display: flex;
+  a {
+    text-transform: uppercase;
+  }
 `;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Others
 // ─────────────────────────────────────────────────────────────────────────────
 
-HeaderContainer.displayName = 'HeaderContainer';
+NavList.displayName = 'NavList';

@@ -6,7 +6,7 @@ import { graphql, useStaticQuery, Link } from 'gatsby';
 import styled from 'styled-components';
 import React from 'react';
 
-import { Footer, Section, H2 } from '~components';
+import { Footer, NavList, Ul, Li, Section, H2 } from '~components';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
@@ -28,21 +28,10 @@ const FooterContainer = () => {
     <FooterStyled>
       {footer.frontmatter.links.map(({ title, links, type }) => {
         return (
-          <Section key={title}>
+          <SectionStyled key={title}>
             <H2>{title}</H2>
-
-            {type === 'nested' && (
-              <ul>
-                {links.map(({ url, text }) => (
-                  <li key={text}>
-                    <a href={url} target="_blank" rel="noopener">
-                      {text}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </Section>
+            {type === 'nested' && <NavList links={links} />}
+          </SectionStyled>
         );
       })}
     </FooterStyled>
@@ -55,7 +44,33 @@ export default FooterContainer;
 // Extended Default Styles
 // ─────────────────────────────────────────────────────────────────────────────
 
-const FooterStyled = styled(Footer)``;
+const FooterStyled = styled(Footer)`
+  border-top: 1px solid rgba(0, 0, 0, 0.02);
+  padding-top: 2rem;
+  display: flex;
+`;
+
+export const SectionStyled = styled(Section)`
+  width: calc(100% / 3);
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  display: flex;
+
+  ${Ul} {
+    align-items: flex-start;
+    flex-direction: column;
+
+    ${Li} {
+      margin-top: 1rem;
+      padding: 0;
+
+      a {
+        text-transform: initial;
+      }
+    }
+  }
+`;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Others

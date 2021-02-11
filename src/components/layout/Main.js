@@ -8,4 +8,7 @@ import styled from 'styled-components';
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const Main = styled.main``;
+export const Main = styled.main`
+  min-height: 100%;
+  padding: 3rem 0;
+`;

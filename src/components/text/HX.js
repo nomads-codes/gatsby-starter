@@ -2,7 +2,11 @@
 // Import
 // ─────────────────────────────────────────────────────────────────────────────
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const HXReset = css`
+  margin: 0;
+`;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // H1
@@ -12,6 +16,7 @@ export const H1 = styled.h1`
   letter-spacing: 0.025em;
   line-height: 4rem;
   font-size: 3rem;
+  ${HXReset}
 `;
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -24,6 +29,7 @@ export const H2 = styled.h2`
   font-size: 1.25rem;
   line-height: 3rem;
   font-weight: 300;
+  ${HXReset}
 `;
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -33,4 +39,5 @@ export const H2 = styled.h2`
 export const H3 = styled.h3`
   line-height: 2.5rem;
   font-size: 2.5rem;
+  ${HXReset}
 `;
