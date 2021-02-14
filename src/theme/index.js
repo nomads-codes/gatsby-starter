@@ -20,9 +20,7 @@ export const commonsCSS = {
 
 export const theme = {
   font: {
-    sans: 'Cambay, sans-serif',
-    serif: 'Arvo, sans',
-    monospace: '"Ubuntu Mono", monospace',
+    sans: 'Open Sans, sans-serif',
   },
   fontSize: {
     xs: '0.75rem',
