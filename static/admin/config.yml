@@ -52,3 +52,10 @@ collections:
           - name: title
           - name: description
           - name: permalink
+      - name: blocks
+        widget: list
+        types:
+          - name: hero
+            label: "Hero"
+            fields:
+              - name: title
