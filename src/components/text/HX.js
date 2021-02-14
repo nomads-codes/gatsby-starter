@@ -2,21 +2,15 @@
 // Import
 // ─────────────────────────────────────────────────────────────────────────────
 
-import styled, { css } from 'styled-components';
-
-const HXReset = css`
-  margin: 0;
-`;
+import styled from 'styled-components';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // H1
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const H1 = styled.h1`
-  letter-spacing: 0.025em;
-  line-height: 4rem;
-  font-size: 3rem;
-  ${HXReset}
+  font-weight: ${({ theme }) => theme.fontWeight.semibold};
+  font-size: ${({ theme }) => theme.fontSize['4xl']};
 `;
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -24,12 +18,8 @@ export const H1 = styled.h1`
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const H2 = styled.h2`
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 1.25rem;
-  line-height: 3rem;
-  font-weight: 300;
-  ${HXReset}
+  font-weight: ${({ theme }) => theme.fontWeight.normal};
+  font-size: ${({ theme }) => theme.fontSize['3xl']};
 `;
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -37,7 +27,6 @@ export const H2 = styled.h2`
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const H3 = styled.h3`
-  line-height: 2.5rem;
-  font-size: 2.5rem;
-  ${HXReset}
+  font-weight: ${({ theme }) => theme.fontWeight.thin};
+  font-size: ${({ theme }) => theme.fontSize['2xl']};
 `;

@@ -6,7 +6,7 @@ import { graphql, useStaticQuery, Link } from 'gatsby';
 import styled from 'styled-components';
 import React from 'react';
 
-import { Footer, NavList, Ul, Li, Section, H2 } from '~components';
+import { Footer, Nav, Ul, Li, Section, H3 } from '~components';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
@@ -15,6 +15,10 @@ import { Footer, NavList, Ul, Li, Section, H2 } from '~components';
 const FooterContainer = () => {
   const { footer } = useStaticQuery(graphql`
     {
+      site: site {
+        ...SITE_METADATA
+      }
+
       footer: mdx(
         fileAbsolutePath: { regex: "/markdown/navigations/" }
         frontmatter: { title: { eq: "Footer" } }
@@ -29,8 +33,8 @@ const FooterContainer = () => {
       {footer.frontmatter.links.map(({ title, links, type }) => {
         return (
           <SectionStyled key={title}>
-            <H2>{title}</H2>
-            {type === 'nested' && <NavList links={links} />}
+            <H3>{title}</H3>
+            {type === 'nested' && <Nav links={links} look="primary" />}
           </SectionStyled>
         );
       })}
@@ -45,8 +49,6 @@ export default FooterContainer;
 // ─────────────────────────────────────────────────────────────────────────────
 
 const FooterStyled = styled(Footer)`
-  border-top: 1px solid rgba(0, 0, 0, 0.02);
-  padding-top: 2rem;
   display: flex;
 `;
 
@@ -64,10 +66,6 @@ export const SectionStyled = styled(Section)`
     ${Li} {
       margin-top: 1rem;
       padding: 0;
-
-      a {
-        text-transform: initial;
-      }
     }
   }
 `;

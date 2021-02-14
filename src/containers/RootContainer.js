@@ -2,67 +2,45 @@
 // Import
 // ─────────────────────────────────────────────────────────────────────────────
 
-import styled from 'styled-components';
-import { Link } from 'gatsby';
+import { ThemeProvider } from 'styled-components';
+import PropTypes from 'prop-types';
 import React from 'react';
 
-import { Ul, Li } from '~components';
-import { isExternal } from '~utils';
+import { SEOContainer, HeaderContainer, FooterContainer } from '~containers';
+import { GlobalStyle, theme, themeDataSet } from '~theme';
+import { View, Main } from '~components';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-const NavItem = ({ url, text }) => {
+const RootContainer = ({ children, layout, meta }) => {
+  theme['layout'] = themeDataSet(layout);
+
   return (
-    <Li key={url}>
-      {isExternal(url) ? (
-        <a target="_blank" rel="noopener" href={url}>
-          {text}
-        </a>
-      ) : (
-        <Link activeClassName="is-active" to={url}>
-          {text}
-        </Link>
-      )}
-    </Li>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      {meta && <SEOContainer meta={meta} />}
+
+      <View>
+        <HeaderContainer />
+        <Main>{children}</Main>
+        <FooterContainer />
+      </View>
+    </ThemeProvider>
   );
 };
 
-export const NavList = ({ links }) => {
-  return (
-    <NavStyled>
-      <Ul>
-        {links.map((props) => (
-          <NavItem key={props.url} {...props} />
-        ))}
-      </Ul>
-    </NavStyled>
-  );
-};
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Extended Default Styles
-// ─────────────────────────────────────────────────────────────────────────────
-
-const NavStyled = styled.nav`
-  ${Ul} {
-    justify-content: space-between;
-    align-items: center;
-    display: flex;
-
-    ${Li} {
-      padding: 0 1vw;
-    }
-  }
-
-  a {
-    text-transform: uppercase;
-  }
-`;
+export default RootContainer;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Others
 // ─────────────────────────────────────────────────────────────────────────────
 
-NavList.displayName = 'NavList';
+RootContainer.displayName = 'RootContainer';
+
+RootContainer.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.node]).isRequired,
+  layout: PropTypes.oneOfType([PropTypes.object]),
+  meta: PropTypes.oneOfType([PropTypes.object]),
+};

@@ -5,17 +5,26 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
+import { RootContainer } from '~containers';
+import { renderBlocks } from '~utils';
 import { H1 } from '~components';
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-const HomePage = () => {
+const HomePage = ({
+  data: {
+    page: {
+      frontmatter: { layout, meta, blocks },
+    },
+  },
+}) => {
   return (
-    <>
-      <H1>HomePage</H1>
-    </>
+    <RootContainer meta={meta} layout={layout}>
+      <H1>{meta.title}</H1>
+      {renderBlocks(blocks)}
+    </RootContainer>
   );
 };
 
@@ -36,7 +45,12 @@ export const query = graphql`
       frontmatter: { meta: { permalink: { eq: "/" } } }
     ) {
       frontmatter {
+        ...LAYOUT_FRAGMENT
         ...META_FRAGMENT
+        blocks {
+          title
+          type
+        }
       }
     }
   }

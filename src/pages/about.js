@@ -5,17 +5,24 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
+import { RootContainer } from '~containers';
 import { H1 } from '~components';
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-const AboutPage = () => {
+const AboutPage = ({
+  data: {
+    page: {
+      frontmatter: { layout, meta },
+    },
+  },
+}) => {
   return (
-    <>
+    <RootContainer meta={meta} layout={layout}>
       <H1>AboutPage</H1>
-    </>
+    </RootContainer>
   );
 };
 
@@ -36,6 +43,7 @@ export const query = graphql`
       frontmatter: { meta: { permalink: { eq: "/about/" } } }
     ) {
       frontmatter {
+        ...LAYOUT_FRAGMENT
         ...META_FRAGMENT
       }
     }

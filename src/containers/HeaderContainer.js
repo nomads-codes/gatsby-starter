@@ -6,15 +6,19 @@ import { graphql, useStaticQuery, Link } from 'gatsby';
 import styled, { css } from 'styled-components';
 import React from 'react';
 
-import { Header, Section, NavList, H1 } from '~components';
+import { Header, Section, Nav, H1 } from '~components';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-const HeaderContainer = () => {
-  const { top, bottom } = useStaticQuery(graphql`
+const HeaderContainer = (props) => {
+  const { top, bottom, site } = useStaticQuery(graphql`
     {
+      site: site {
+        ...SITE_METADATA
+      }
+
       top: mdx(
         fileAbsolutePath: { regex: "/markdown/navigations/" }
         frontmatter: { title: { eq: "HeaderTop" } }
@@ -34,15 +38,15 @@ const HeaderContainer = () => {
   return (
     <HeaderStyled>
       <SectionStyled isTop>
-        <NavList links={top.frontmatter.links} />
+        <Nav links={top.frontmatter.links} />
       </SectionStyled>
 
       <SectionStyled isBottom>
         <H1>
-          <Link to="/">Nomads Codes</Link>
+          <Link to="/">{site.siteMetadata.siteTitle}</Link>
         </H1>
 
-        <NavList links={bottom.frontmatter.links} />
+        <Nav links={bottom.frontmatter.links} />
       </SectionStyled>
     </HeaderStyled>
   );
@@ -67,7 +71,7 @@ const SectionStyled = styled(Section)`
       height: 4rem;
 
       a {
-        font-size: 1.4rem;
+        font-size: ${({ theme }) => theme.fontSize.xl};
       }
     `}
 
