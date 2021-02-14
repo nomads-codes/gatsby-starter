@@ -1,3 +1,4 @@
+export { default as getBrowserTheme } from './getBrowserTheme';
 export { default as renderBlocks } from './renderBlocks';
 export { default as parseLinks } from './parseLinks';
 
