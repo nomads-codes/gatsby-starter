@@ -4,7 +4,8 @@
     "paths": {
       "~components": ["src/components"],
       "~containers": ["src/containers"],
-      "~templates": ["src/templates"],
+      "~blocks": ["src/blocks"],
+      "~theme": ["src/theme"],
       "~utils": ["src/utils"]
     }
   },
