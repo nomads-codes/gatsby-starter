@@ -2,18 +2,23 @@
 // Import
 // ─────────────────────────────────────────────────────────────────────────────
 
-import styled from 'styled-components';
-// import { commonsCSS } from '~theme';
+import { LightTheme, DarkTheme, THEME_LABEL_LIGHT, THEME_LABEL_DARK } from '~theme';
+import { useLocalStorage } from '~hooks';
+import { getBrowserTheme } from '~utils';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const Main = styled.main`
-  /* ${({ theme }) => theme.layout.main === 'narrow' && commonsCSS.narrow}; TODO: */
-  /* ${({ theme }) => theme.layout.main === 'wide' && commonsCSS.wide}; TODO: */
+export default function useTheme() {
+  const [storedValue, setValue] = useLocalStorage('theme', getBrowserTheme());
 
-  padding-right: 1rem;
-  padding-left: 1rem;
-  max-width: 100%;
-`;
+  const toggleTheme = () =>
+    setValue((prevTheme) => {
+      return prevTheme === THEME_LABEL_LIGHT ? THEME_LABEL_DARK : THEME_LABEL_LIGHT;
+    });
+
+  return [storedValue, toggleTheme];
+}
+
+export const getTheme = (theme) => (theme === THEME_LABEL_LIGHT ? LightTheme : DarkTheme);

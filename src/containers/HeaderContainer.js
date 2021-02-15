@@ -2,11 +2,12 @@
 // Import
 // ─────────────────────────────────────────────────────────────────────────────
 
-import { graphql, useStaticQuery, Link } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import styled, { css } from 'styled-components';
 import React from 'react';
 
-import { Header, Section, Nav, H1 } from '~components';
+import { Header, Section, Nav, H1, Link, Anchor } from '~components';
+import { ColourThemeContainer } from '~containers';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
@@ -36,52 +37,59 @@ const HeaderContainer = (props) => {
   `);
 
   return (
-    <HeaderStyled>
+    <Header>
       <SectionStyled isTop>
+        <ColourThemeContainer />
         <Nav links={top.frontmatter.links} />
       </SectionStyled>
 
       <SectionStyled isBottom>
         <H1>
-          <Link to="/">{site.siteMetadata.siteTitle}</Link>
+          <Link to="/" look="primary">
+            {site.siteMetadata.siteTitle}
+          </Link>
         </H1>
 
         <Nav links={bottom.frontmatter.links} />
       </SectionStyled>
-    </HeaderStyled>
+    </Header>
   );
 };
 
 export default HeaderContainer;
 
 // ─────────────────────────────────────────────────────────────────────────────
+// Variants
+// ─────────────────────────────────────────────────────────────────────────────
+
+const sectionBottom = css`
+  height: 8rem;
+
+  ${H1} {
+    ${Anchor} {
+      font-size: ${({ theme }) => theme.font.size['4xl']};
+    }
+  }
+`;
+
+const sectionTop = css`
+  background-color: rgba(0, 0, 0, 0.04);
+  height: 4rem;
+
+  ${Anchor} {
+    font-size: ${({ theme }) => theme.font.size.xl};
+  }
+`;
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Extended Default Styles
 // ─────────────────────────────────────────────────────────────────────────────
 
-const HeaderStyled = styled(Header)`
-  border-bottom: 1px solid rgba(0, 0, 0, 0.02);
-`;
-
 const SectionStyled = styled(Section)`
-  ${({ isTop }) =>
-    isTop &&
-    css`
-      background-color: rgba(0, 0, 0, 0.04);
-      justify-content: flex-end;
-      height: 4rem;
+  ${({ isBottom }) => isBottom && sectionBottom}
+  ${({ isTop }) => isTop && sectionTop}
 
-      a {
-        font-size: ${({ theme }) => theme.fontSize.xl};
-      }
-    `}
-
-  ${({ isBottom }) =>
-    isBottom &&
-    css`
-      justify-content: space-between;
-      height: 8rem;
-    `}
-
+  justify-content: space-between;
   align-items: center;
   display: flex;
 `;

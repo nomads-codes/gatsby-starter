@@ -1,43 +1,46 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// Import
+// Font weight
 // ─────────────────────────────────────────────────────────────────────────────
 
-import PropTypes from 'prop-types';
-import React from 'react';
-
-import { SEOContainer, HeaderContainer, FooterContainer } from '~containers';
-import { View, Main } from '~components';
-import { ThemeProvider } from '~theme';
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Component
-// ─────────────────────────────────────────────────────────────────────────────
-
-const RootContainer = ({ children, layout, meta }) => {
-  return (
-    <ThemeProvider>
-      <>
-        <SEOContainer meta={meta} />
-        <View>
-          <HeaderContainer />
-          <Main>{children}</Main>
-          <FooterContainer />
-        </View>
-      </>
-    </ThemeProvider>
-  );
+const weight = {
+  hairline: '100',
+  thin: '200',
+  light: '300',
+  normal: '400',
+  medium: '500',
+  semibold: '600',
+  bold: '700',
+  extrabold: '800',
+  black: '900',
 };
 
-export default RootContainer;
-
 // ─────────────────────────────────────────────────────────────────────────────
-// Others
+// Font size
 // ─────────────────────────────────────────────────────────────────────────────
 
-RootContainer.displayName = 'RootContainer';
+const size = {
+  xs: '0.75rem',
+  sm: '0.875rem',
+  base: '1rem',
+  lg: '1.125rem',
+  xl: '1.25rem',
+  '2xl': '1.5rem',
+  '3xl': '1.875rem',
+  '4xl': '2.25rem',
+  '5xl': '3rem',
+  '6xl': '4rem',
+};
 
-RootContainer.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.node]).isRequired,
-  layout: PropTypes.oneOfType([PropTypes.object]),
-  meta: PropTypes.oneOfType([PropTypes.object]),
+// ─────────────────────────────────────────────────────────────────────────────
+// Font
+// ─────────────────────────────────────────────────────────────────────────────
+
+const family = {
+  sans: 'Open Sans, sans-serif',
+};
+
+export const font = {
+  family,
+  weight,
+  size,
 };

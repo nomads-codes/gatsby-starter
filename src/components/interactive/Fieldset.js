@@ -3,17 +3,26 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import styled from 'styled-components';
-// import { commonsCSS } from '~theme';
+
+import { Tooltip } from '~components/text/Tooltip';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
-// ─────────────────────────────────────────────────────────────────────────────
+// ──────────────────────────────────────────────────────────s───────────────────
 
-export const Main = styled.main`
-  /* ${({ theme }) => theme.layout.main === 'narrow' && commonsCSS.narrow}; TODO: */
-  /* ${({ theme }) => theme.layout.main === 'wide' && commonsCSS.wide}; TODO: */
+export const Fieldset = styled.fieldset`
+  position: relative;
+  border: none;
 
-  padding-right: 1rem;
-  padding-left: 1rem;
-  max-width: 100%;
+  & > ${Tooltip} {
+    transform: translateY(1rem);
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &:hover > ${Tooltip}, &:focus > ${Tooltip}, &:focus-within > ${Tooltip} {
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+  }
 `;

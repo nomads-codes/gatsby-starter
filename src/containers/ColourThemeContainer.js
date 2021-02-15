@@ -2,42 +2,57 @@
 // Import
 // ─────────────────────────────────────────────────────────────────────────────
 
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { SEOContainer, HeaderContainer, FooterContainer } from '~containers';
-import { View, Main } from '~components';
-import { ThemeProvider } from '~theme';
+import { ThemeContext, THEME_LABEL_LIGHT, THEME_LABEL_DARK } from '~theme';
+import { Input, Button, Link } from '~components';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-const RootContainer = ({ children, layout, meta }) => {
-  return (
-    <ThemeProvider>
-      <>
-        <SEOContainer meta={meta} />
-        <View>
-          <HeaderContainer />
-          <Main>{children}</Main>
-          <FooterContainer />
-        </View>
-      </>
-    </ThemeProvider>
-  );
+const ColourThemeContainer = ({ look }) => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
+  const toggleText = `${(theme === THEME_LABEL_LIGHT
+    ? THEME_LABEL_DARK
+    : THEME_LABEL_LIGHT
+  ).toUpperCaseFirstChar()}`;
+
+  const options = [
+    {
+      checked: theme === THEME_LABEL_LIGHT,
+      label: THEME_LABEL_LIGHT.toUpperCaseFirstChar(),
+      value: THEME_LABEL_LIGHT,
+    },
+    {
+      checked: theme === THEME_LABEL_DARK,
+      label: THEME_LABEL_DARK.toUpperCaseFirstChar(),
+      value: THEME_LABEL_DARK,
+    },
+  ];
+
+  if (look === 'radio') {
+    return <Input options={options} onChange={toggleTheme} type="radio" name="theme" />;
+  }
+
+  if (look === 'button') {
+    return <Button onClick={toggleTheme}>{toggleText}</Button>;
+  }
+
+  if (look === 'link' || look === undefined) {
+    return (
+      <Link onClick={toggleTheme} prevent>
+        {toggleText}
+      </Link>
+    );
+  }
 };
 
-export default RootContainer;
+export default ColourThemeContainer;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Others
 // ─────────────────────────────────────────────────────────────────────────────
 
-RootContainer.displayName = 'RootContainer';
-
-RootContainer.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.node]).isRequired,
-  layout: PropTypes.oneOfType([PropTypes.object]),
-  meta: PropTypes.oneOfType([PropTypes.object]),
-};
+ColourThemeContainer.displayName = 'ColourThemeContainer';

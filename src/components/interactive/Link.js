@@ -13,8 +13,8 @@ import { isExternalURL } from '~utils';
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-const Link = ({ href, to, children, ...rest }) => {
-  const link = href || to;
+const Link = ({ href, to, children, prevent, ...rest }) => {
+  const link = !prevent ? href || to : '#';
 
   const props = {
     external: {
@@ -50,14 +50,15 @@ export default Link;
 // ─────────────────────────────────────────────────────────────────────────────
 
 const AnchorPrimary = css`
-  font-weight: ${({ theme }) => theme.fontWeight.normal};
-  font-size: ${({ theme }) => theme.fontSize['2xl']};
+  font-weight: ${({ theme }) => theme.font.weight.normal};
+  font-size: ${({ theme }) => theme.font.size['2xl']};
   text-decoration: none;
 
   &:hover,
   &:focus,
   &:active,
   &.is-active {
+    color: ${({ theme }) => theme.color.primary};
     text-decoration: underline;
   }
 `;
@@ -74,10 +75,10 @@ const AnchorTertiary = css`
 // Extended Default Styles
 // ─────────────────────────────────────────────────────────────────────────────
 
-const Anchor = styled.a`
+export const Anchor = styled.a`
   ${({ look }) => look === 'secondary' && AnchorSecondary};
   ${({ look }) => look === 'tertiary' && AnchorTertiary};
-  ${({ look }) => look === 'primary' && AnchorTertiary};
+  ${({ look }) => look === 'primary' && AnchorPrimary};
 `;
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -88,11 +89,13 @@ Link.displayName = 'Link';
 
 Link.propTypes = {
   children: PropTypes.node.isRequired,
+  prevent: PropTypes.bool,
   href: PropTypes.string,
   to: PropTypes.string,
 };
 
 Link.defaultProps = {
+  prevent: false,
   href: null,
   to: null,
 };

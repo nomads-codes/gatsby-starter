@@ -53,10 +53,10 @@ const FooterStyled = styled(Footer)`
 `;
 
 export const SectionStyled = styled(Section)`
-  width: calc(100% / 3);
-  flex-direction: column;
+  justify-content: flex-start;
   align-items: flex-start;
-  justify-content: center;
+  flex-direction: column;
+  width: calc(100% / 4);
   display: flex;
 
   ${Ul} {

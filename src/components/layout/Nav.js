@@ -11,22 +11,19 @@ import { Link, Ul, Li } from '~components';
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const Nav = ({ links, look = 'primary' }) => {
-  console.log(look);
-  return (
-    <NavStyled>
-      <Ul>
-        {links.map(({ text, url }) => (
-          <Li key={url}>
-            <Link key={url} to={url} look={look}>
-              {text}
-            </Link>
-          </Li>
-        ))}
-      </Ul>
-    </NavStyled>
-  );
-};
+export const Nav = ({ links, look = 'primary' }) => (
+  <NavStyled>
+    <Ul>
+      {links.map(({ text, url }) => (
+        <Li key={url}>
+          <Link key={url} to={url} look={look}>
+            {text}
+          </Link>
+        </Li>
+      ))}
+    </Ul>
+  </NavStyled>
+);
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Extended Default Styles

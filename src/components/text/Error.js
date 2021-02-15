@@ -3,17 +3,32 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import styled from 'styled-components';
-// import { commonsCSS } from '~theme';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const Main = styled.main`
-  /* ${({ theme }) => theme.layout.main === 'narrow' && commonsCSS.narrow}; TODO: */
-  /* ${({ theme }) => theme.layout.main === 'wide' && commonsCSS.wide}; TODO: */
+export const Error = styled.div`
+  background-color: var(--color-bg);
+  border-radius: 1rem;
+  transition: 100ms;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  padding: 1rem;
+  color: white;
 
-  padding-right: 1rem;
-  padding-left: 1rem;
-  max-width: 100%;
+  top: calc(100% + 1rem);
+  position: absolute;
+  z-index: 999;
+
+  &::after {
+    content: '';
+    border-width: 0.5rem;
+    border-style: solid;
+    position: absolute;
+    bottom: 100%;
+    left: 1rem;
+
+    border-color: transparent transparent var(--color-danger) transparent;
+  }
 `;

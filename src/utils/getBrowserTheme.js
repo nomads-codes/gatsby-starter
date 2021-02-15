@@ -1,9 +1,13 @@
+import { THEME_LABEL_LIGHT, THEME_LABEL_DARK } from '~theme';
+
 const getBrowserTheme = () => {
   if (typeof window !== 'undefined') {
-    return window.matchMedia('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light';
+    return window.matchMedia(`(prefers-color-scheme: ${THEME_LABEL_DARK})`)?.matches
+      ? THEME_LABEL_DARK
+      : THEME_LABEL_LIGHT;
   }
 
-  return 'light';
+  return THEME_LABEL_LIGHT;
 };
 
 export default getBrowserTheme;

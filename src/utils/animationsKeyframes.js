@@ -2,18 +2,21 @@
 // Import
 // ─────────────────────────────────────────────────────────────────────────────
 
-import styled from 'styled-components';
-// import { commonsCSS } from '~theme';
+import { keyframes, css } from 'styled-components';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const Main = styled.main`
-  /* ${({ theme }) => theme.layout.main === 'narrow' && commonsCSS.narrow}; TODO: */
-  /* ${({ theme }) => theme.layout.main === 'wide' && commonsCSS.wide}; TODO: */
+const animationsKeyframes = ({ from = {}, to = {}, properties = '' } = {}) => {
+  const setup = keyframes`
+    from {${from}}
+    to   {${to}}
+  `;
 
-  padding-right: 1rem;
-  padding-left: 1rem;
-  max-width: 100%;
-`;
+  return css`
+    ${setup} ${properties}
+  `;
+};
+
+export default animationsKeyframes;
