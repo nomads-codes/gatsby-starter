@@ -3,7 +3,7 @@ backend:
   squash_merges: true
 
 site_url: https://nomadscodes-gatsby-starter.netlify.app
-media_folder: "static/images/uploads"
+media_folder: "src/images"
 public_folder: images
 local_backend: true
 

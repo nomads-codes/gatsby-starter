@@ -2,39 +2,57 @@
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-module.exports = ({ actions, createContentDigest }) => {
-  const { createTypes, createFieldExtension } = actions;
-
+module.exports = ({ actions: { createTypes, createFieldExtension }, createContentDigest }) => {
   createFieldExtension({
     name: 'mdx',
-    extend: () => ({
-      type: 'String',
-      resolve(parent, args, context, info) {
-        const value = parent[info.fieldName];
-        if (typeof value !== 'string') {
-          return value;
-        }
-        const mdxType = info.schema.getType('Mdx');
-        const { resolve } = mdxType.getFields().body;
-        return resolve({
-          rawBody: value,
-          internal: {
-            contentDigest: createContentDigest(value),
-          },
-        });
-      },
-    }),
+    extend() {
+      return {
+        type: 'String',
+        resolve(source, args, context, info) {
+          // Grab field
+          const value = source[info.fieldName];
+
+          if (typeof value !== 'string') {
+            return value;
+          }
+
+          // Isolate MDX
+          const mdxType = info.schema.getType('Mdx');
+
+          // Grab just the body contents of what MDX generates
+          const { resolve } = mdxType.getFields().body;
+
+          return resolve(
+            {
+              internal: {
+                contentDigest: createContentDigest(value), // Used for caching
+              },
+              rawBody: value,
+              context,
+              args,
+            },
+            info,
+          );
+        },
+      };
+    },
   });
 
-  createTypes(`
+  const typeDefs = `
     type Mdx implements Node {
       frontmatter: MdxFrontmatter
     }
     type MdxFrontmatter {
+      blocks: [BlockValues]
       links: [LinkValues]
+    }
+    type BlockValues {
+      mdx: String @mdx
     }
     type LinkValues {
       mdx: String @mdx
     }
-  `);
+  `;
+
+  createTypes(typeDefs);
 };
