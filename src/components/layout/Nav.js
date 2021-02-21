@@ -34,6 +34,7 @@ const NavStyled = styled.nav`
     justify-content: space-between;
     align-items: center;
     display: flex;
+    list-style: none;
 
     ${Li}:not(:last-child) {
       padding-right: 1rem;
