@@ -29,6 +29,7 @@ export * from './typography/P';
 // Layout
 // ─────────────────────────────────────────────────────────────────────────────
 
+export * from './layout/Article';
 export * from './layout/Section';
 export * from './layout/Footer';
 export * from './layout/Header';
