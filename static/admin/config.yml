@@ -59,3 +59,8 @@ collections:
             label: "Hero"
             fields:
               - name: title
+          - name: markdown
+            label: "Markdown"
+            fields:
+              - name: mdx
+                widget: markdown
