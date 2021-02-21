@@ -7,7 +7,7 @@ import React from 'react';
 
 import { RootContainer } from '~containers';
 import { renderBlocks } from '~utils';
-import { H1 } from '~components';
+import { Main } from '~components';
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  Component
@@ -20,10 +20,15 @@ const HomePage = ({
     },
   },
 }) => {
+  const pageBlocks = renderBlocks({
+    components: {},
+    images: [],
+    blocks,
+  });
+
   return (
     <RootContainer meta={meta} layout={layout}>
-      <H1>{meta.title}</H1>
-      {renderBlocks(blocks)}
+      <Main>{pageBlocks}</Main>
     </RootContainer>
   );
 };
