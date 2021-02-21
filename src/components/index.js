@@ -3,9 +3,10 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 export { default as TextInput } from './interactive/TextInput';
-export { default as Input } from './interactive/Input';
 export { default as Link, Anchor } from './interactive/Link';
-
+export { default as Input } from './interactive/Input';
+export { Fieldset } from './interactive/Fieldset';
+export { Radio } from './interactive/Radio';
 export * from './interactive/Button';
 
 // ─────────────────────────────────────────────────────────────────────────────

@@ -4,15 +4,7 @@
 
 import React, { forwardRef } from 'react';
 
-import { Button } from '~components/interactive/Button';
-import { Fieldset } from '~components/interactive/Fieldset';
-import { Radio } from '~components/interactive/Radio';
-import TextInput from '~components/interactive/TextInput';
-
-import { Label } from '~components/text/Label';
-import { Legend } from '~components/text/Legend';
-import { Tooltip } from '~components/text/Tooltip';
-import { Error } from '~components/text/Error';
+export { Button, Fieldset, Radio, TextInput, Label, Legend, Tooltip, Error } from '~components';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
