@@ -13,8 +13,8 @@ import { isExternalURL } from '~utils';
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-const Link = ({ href, to, children, prevent, ...rest }) => {
-  const link = !prevent ? href || to : '#';
+const Link = ({ href, to, children, ...rest }) => {
+  const link = href || to;
 
   const props = {
     external: {
@@ -89,13 +89,11 @@ Link.displayName = 'Link';
 
 Link.propTypes = {
   children: PropTypes.node.isRequired,
-  prevent: PropTypes.bool,
   href: PropTypes.string,
   to: PropTypes.string,
 };
 
 Link.defaultProps = {
-  prevent: false,
   href: null,
   to: null,
 };
