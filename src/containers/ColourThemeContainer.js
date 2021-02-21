@@ -36,16 +36,8 @@ const ColourThemeContainer = ({ look }) => {
     return <Input options={options} onChange={toggleTheme} type="radio" name="theme" />;
   }
 
-  if (look === 'button') {
+  if (look === 'button' || look === undefined) {
     return <Button onClick={toggleTheme}>{toggleText}</Button>;
-  }
-
-  if (look === 'link' || look === undefined) {
-    return (
-      <Link onClick={toggleTheme} prevent>
-        {toggleText}
-      </Link>
-    );
   }
 };
 
