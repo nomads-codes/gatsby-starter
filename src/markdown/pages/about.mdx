@@ -8,4 +8,70 @@ meta:
   description: About Page is simply dummy text of the printing and typesetting industry.
   title: About Page
   permalink: /about/
+blocks:
+  - title: >-
+      About page text of the printing and typesetting industry. [some work in the past](/gallery)
+    type: hero
+  - mdx: >-
+      ## [Markdown guide](https://www.markdownguide.org/getting-started/) is simply getting-started dummy text of the printing and typesetting industry.
+
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+
+
+        - Unordered [list item](/gallery) 1
+        - Unordered list item 2
+        - Unordered list item 3
+
+
+        1. Unordered list item 1
+        2. Unordered list item 2
+        3. Unordered list item 3
+
+
+      > Blockquote example with a [link](/gallery) to gallery page
+
+
+        > ## Blockquote with Heading and Unordered list
+        >
+        > - Unordered [list item](/gallery) 1
+        > - Unordered list item 2
+        > - Unordered list item 3
+        >
+
+      *Lorem Ipsum* is simply dummy text of the printing and **typesetting industry**.
+
+
+      ---
+    type: markdown
+  - mdx: >-
+      ## How to use images in mdx file for a specific page
+
+
+        >
+        > 1. Images come from './src/images/about', where we add these for content in a page about us
+        >
+        > 2. These images we can add directly in a './src/markdown/pages/about.mdx'
+        >
+        > 3. For ex.: 'props.images.Photo1Fixed ' or  'props.images.Photo1FLuid'
+        >
+        > 4. The image name is divide into two pieces: 'Photo1' and 'Fluid' or 'Fixed'
+        >
+        > 5. The first part is a natural name of file inside './src/images/about', the second part of the name is a
+        part of graphql childrenImageSharp fragment
+        >
+        > 6. 'Photo1Fixed' props: align, height and width
+        > 6. 'Photo1Fluid' without props.
+
+
+      <props.images.Photo1Fixed align="left" height="350" />
+      <props.images.Photo2Fixed align="left" height="350" />
+      <props.images.Photo3Fixed align="left" height="350" />
+      <props.images.Photo4Fixed align="left" height="350" />
+      <props.images.Photo5Fixed align="left" height="350" />
+      <props.images.Photo6Fixed align="left" height="350" />
+      <props.images.Photo7Fixed align="left" height="350" />
+    type: markdown
+  - mdx: >-
+      <props.images.Photo3Fluid/>
+    type: markdown
 ---
