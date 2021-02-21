@@ -6,27 +6,23 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { SEOContainer, HeaderContainer, FooterContainer } from '~containers';
-import { View, Main } from '~components';
 import { ThemeProvider } from '~theme';
+import { View } from '~components';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-const RootContainer = ({ children, layout, meta }) => {
-  return (
-    <ThemeProvider>
-      <>
-        <SEOContainer meta={meta} />
-        <View>
-          <HeaderContainer />
-          <Main>{children}</Main>
-          <FooterContainer />
-        </View>
-      </>
-    </ThemeProvider>
-  );
-};
+const RootContainer = ({ children, layout, meta }) => (
+  <ThemeProvider>
+    <SEOContainer meta={meta} />
+    <View>
+      <HeaderContainer />
+      {children}
+      <FooterContainer />
+    </View>
+  </ThemeProvider>
+);
 
 export default RootContainer;
 
