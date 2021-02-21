@@ -12,13 +12,18 @@ export * from './interactive/Button';
 // Text
 // ─────────────────────────────────────────────────────────────────────────────
 
-export * from './text/Tooltip';
-export * from './text/Legend';
-export * from './text/Label';
-export * from './text/Error';
-export * from './text/List';
-export * from './text/HX';
-export * from './text/P';
+// ─────────────────────────────────────────────────────────────────────────────
+// Typography
+// ─────────────────────────────────────────────────────────────────────────────
+
+export * from './typography/Blockquote';
+export * from './typography/Tooltip';
+export * from './typography/Legend';
+export * from './typography/Label';
+export * from './typography/Error';
+export * from './typography/List';
+export * from './typography/HX';
+export * from './typography/P';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Layout

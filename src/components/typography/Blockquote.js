@@ -4,12 +4,8 @@
 
 import styled from 'styled-components';
 
-import { Label } from '~components/text/Label';
-
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const Legend = styled(Label)``;
-
-Legend.defaultProps = { as: 'legend' };
+export const Blockquote = styled.blockquote``;

@@ -9,8 +9,8 @@ import styled from 'styled-components';
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const H1 = styled.h1`
-  font-weight: ${({ theme }) => theme.font.weight.semibold};
-  font-size: ${({ theme }) => theme.font.size['4xl']};
+  font-weight: ${({ theme }) => theme?.font?.weight?.normal};
+  font-size: ${({ theme }) => theme?.font?.size['4xl']};
 `;
 
 // ─────────────────────────────────────────────────────────────────────────────
