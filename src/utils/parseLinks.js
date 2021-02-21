@@ -12,7 +12,6 @@ import { Link } from '~components';
 
 const parseLinks = (string, { type } = {}) => {
   if (typeof string === 'string') {
-    console.log(string.split(/\[(.*?\]\(.*?)\)/));
     return string.split(/\[(.*?\]\(.*?)\)/).map((item) => {
       const [text, href] = item.split('](');
 
